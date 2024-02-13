@@ -2,8 +2,6 @@
 //Endless Runner
 //12 hours
 
-const Phaser = require("phaser");
-
 let config = {
     type:Phaser.AUTO,
     width: 1000,
@@ -13,3 +11,10 @@ let config = {
 
 let game = new Phaser.Game(config);
 
+// set UI sizes
+let borderUISize = game.config.height / 15;
+let borderPadding = borderUISize / 3;
+
+
+// reserve keyboard variables
+let keyF, keyR, keyLEFT, keyRIGHT;
