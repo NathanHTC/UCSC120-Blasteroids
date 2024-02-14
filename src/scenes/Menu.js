@@ -1,5 +1,6 @@
 
 
+
 class Menu extends Phaser.Scene {
     constructor(){
         super("menuScene");
@@ -26,6 +27,21 @@ class Menu extends Phaser.Scene {
             endFrame: 9
         })
 
+        let menuConfig = {
+            fontFamily: 'cursive',
+            fontSize: '28px',
+            backgroundColor: '#FFFFF',
+            color: '#843605',
+            align: 'right',
+            padding: {
+                top: 5,
+                bottom: 5,
+            },
+            fixedWidth: 0
+        }
+
+        
+
     }
 
     create() {
@@ -38,10 +54,36 @@ class Menu extends Phaser.Scene {
         }),
         frameRate: 30
        }) 
-       this.add.text(20, 20, 'Endless Runner Menu')
-       this.scene.start('playScene')
+       this.add.text(game.config.width / 3, game.config.height / 2 - 60, 'Endless Runner Menu')
+       this.add.text(game.config.width / 3, game.config.height / 2 - 30, 'Left Arrow: Start Normal Mode')
+       this.add.text(game.config.width / 3, game.config.height / 2, 'Right Arrow: Start Hard Mode')
+
+        keyLeft = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.LEFT)
+        keyRight = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.RIGHT)
+
+        //initialize highestScore to 0 if not found, stored in localStorage
+        let highestScore = localStorage.getItem('highestScore') || '0'; 
+        this.scoreText = this.add.text(game.config.width/3 + 120, game.config.height/2 + 50, 'Highest Score:' + highestScore).setOrigin(0.5);
+        this.creditText = this.add.text(game.config.width/3 + 120, game.config.height/2 + 90, 'Credit: Art: HoTin Chen ; Music: Rog Asignf ').setOrigin(0.5);
+
     }
     update(){
-        
+        if(Phaser.Input.Keyboard.JustDown(keyLeft)){
+            this.game.settings = {
+                cupcakeSpeed: 3,
+                boomSpeed:2
+            }
+            this.sound.play('pickupcake')
+            this.scene.start('playScene')
+        }
+        if(Phaser.Input.Keyboard.JustDown(keyRight)){
+            this.game.settings = {
+                cupcakeSpeed: 4,
+                boomSpeed:6
+            }
+            this.sound.play('pickupcake')
+            this.scene.start('playScene')
+        }
+       
     }
 }

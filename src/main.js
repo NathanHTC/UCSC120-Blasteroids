@@ -17,4 +17,4 @@ let borderPadding = borderUISize / 3;
 
 
 // reserve keyboard variables
-let keyReset, keyLeft, keyRight, keyUp, keyDown;
+let keyReset, keyLeft, keyRight, keyUp, keyDown, keyX;

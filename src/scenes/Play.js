@@ -24,6 +24,7 @@ class Play extends Phaser.Scene {
         // this.donut1 = new Donut(this, game.config.width/2, game.config.height - borderPadding - borderUISize, '').setOrigin(0, 0)
 
         keyReset = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.R)
+        keyX = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.X)
         keyUp = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.UP)
         keyDown = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.DOWN)
         keyLeft = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.LEFT)
@@ -34,11 +35,13 @@ class Play extends Phaser.Scene {
         this.boom3 = new Boom(this, game.config.width/2 + borderPadding * 15, game.config.height/3 - borderPadding, 'boom', 0).setOrigin(0, 0)
 
         //MODS -- add BGM
-        // var music = this.sound.add('backgroundMusic');
-        // music.play({
-        //     loop:true,
-        //     volume: 0.6
-        // });
+        this.music = this.sound.add('backgroundMusic');
+        this.music.play({
+            loop:true,
+            volume: 0.6
+        });
+
+        this.gameOver = false
 
         // display score
         let scoreConfig = {
@@ -53,6 +56,10 @@ class Play extends Phaser.Scene {
             },
             
         }
+
+        //MODS -- init highest score
+        localStorage.setItem('highestScore', this.bird.score.toString());// MOD -- game is over, update the highest score if needed
+        
         
         
         this.scoreText = this.add.text(borderUISize + borderPadding, borderUISize - borderPadding, 'Score: ' + this.bird.score, scoreConfig);
@@ -65,15 +72,25 @@ class Play extends Phaser.Scene {
 
     update(){
         this.background.tilePositionX -= -1
+         // check key input for restart
+        if(this.gameOver && Phaser.Input.Keyboard.JustDown(keyReset)) {
+        this.scene.restart()
+        }
+        if(this.gameOver && Phaser.Input.Keyboard.JustDown(keyX)) {
+            this.scene.start('menuScene')
+        }
 
-        this.bird.update()
-        this.cupcake1.update()
-        this.cupcake2.update()
-        this.cupcake3.update()
-
-        this.boom1.update()
-        this.boom2.update()
-        this.boom3.update()
+        if(!this.gameOver){
+            this.bird.update()
+            this.cupcake1.update()
+            this.cupcake2.update()
+            this.cupcake3.update()
+    
+            this.boom1.update()
+            this.boom2.update()
+            this.boom3.update()
+        }
+        
 
         //check collision with cupcake
         if(this.checkCollision(this.bird, this.cupcake1)){
@@ -110,6 +127,8 @@ class Play extends Phaser.Scene {
         
     }
 
+    
+
     checkCollision(bird, item) {
         // simple AABB checking
         if (bird.x < item.x + item.width && 
@@ -122,13 +141,33 @@ class Play extends Phaser.Scene {
         }
       }
     checkHp(bird){
-        if(bird.hp > 0){
+        if(bird.hp >= 1){
             bird.hp -= 1
             console.log('Hp is ' + bird.hp)
             this.hpText.text = 'Hp: ' + bird.hp
             bird.reset()
         }else{
-            console.log('game over')
+            // console.log('game over')
+            this.gameOver = true
+            //stop music
+            this.music.stop()
+            
+            let scoreConfig = {
+                fontFamily: 'Courier',
+                fontSize: '28px',
+                backgroundColor: '#F3B141',
+                color: '#843605',
+                align: 'right',
+                padding: {
+                    top: 5,
+                    bottom: 5,
+                },
+                
+            }
+            this.OverText = this.add.text(game.config.width/8, game.config.height/2, 'GameOver: R to restart, X back to menu' , scoreConfig);
+            if(this.bird.score > parseInt(localStorage.getItem('highestScore'))){
+                localStorage.setItem('highestScore', this.bird.score.toString());
+            }
         }
     }
     cakeCollect(bird, item){
