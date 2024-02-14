@@ -6,6 +6,8 @@ class Bird extends Phaser.GameObjects.Sprite{
 
         scene.add.existing(this)
         this.moveSpeed = 4
+        this.hp = 5
+        this.score = 0
     }
     update(){
         if(keyUp.isDown && this.y > borderPadding){
@@ -21,5 +23,8 @@ class Bird extends Phaser.GameObjects.Sprite{
             this.x += this.moveSpeed;
         }
         
+    }
+    reset(){
+        this.y = game.config.height - borderPadding - borderUISize * 7
     }
 }
