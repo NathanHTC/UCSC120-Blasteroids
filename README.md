@@ -1,8 +1,10 @@
 This is a UCSC120 TEAM Project
 created by Paradox Girl and Nathan Chan
 
-Approx. Dev Time Line
+Approx. Dev Time Line;
+
 Let’s try to finish the following by next Wesday, 28 Feb
+
 Create the sprite
 Adding new control to the spaceship. The player can move up, down, right, and left. 
 the spaceship sprite will show its orientation. 
@@ -15,6 +17,7 @@ Adding a fuel bar that sits on top of the viewport to show how much fuel is left
 or Hp is 0 the game is over.
 
 Lets try to finish the following by  5th March
+
 adding 3 phases of the game, the first 20 seconds will be easy, the meteor will be moving at a constant speed; 
 starts from 20s the speed of meteor will increase by 50%, 
 from 40s and the meteor will fly towards the player from all directions.
@@ -29,11 +32,15 @@ The in-class first Demo due on 8th March
 9 DAYS for add-ons 
 
 Upgrade to a bigger, more powerful aircraft that can take on more damage
+
 If I have additional time, I will implement the following stretch goals (in this order)
+
 When they reach 200 points, New weaponry will be unlocked laser and if they reach 250 points RAILGUN will be unlocked.
 Adding two-player mode so two players can compete with each other
+
 Players can choose to sign up for a player account; implement user authentication, password hashing, session management,
 and Mongo/postgres database storage/retrieval of user data. There will be a scoreboard below the game 
+
 window that dynamically loads high scores from players by an SSR nextjs component, tailwind styling
 .
 
