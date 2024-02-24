@@ -1,5 +1,5 @@
 This is a UCSC120 TEAM Project
-created by Paradox Girl and Nathan Chan
+created by Shazer Rizzo and Nathan Chan
 
 Approx. Dev Time Line;
 
