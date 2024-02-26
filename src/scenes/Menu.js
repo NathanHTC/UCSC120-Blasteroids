@@ -8,10 +8,10 @@ class Menu extends Phaser.Scene {
 
     preload(){
         this.load.image('donut1', './assets/domut1.png')
-        this.load.image('bird', './assets/bird.png')
+        this.load.image('spaceShip', './assets/sprites/spaceShip.png')
         this.load.image('cupcake', './assets/cupcake.png')
         this.load.image('boom', './assets/boom.png')
-        this.load.image('background', './assets/background.png')
+        this.load.image('background', './assets/sprites/background.png')
         
         // load audio
         this.load.audio('sfx_explo01', './assets/explo01.wav');

@@ -1,6 +1,6 @@
 
 
-class Bird extends Phaser.GameObjects.Sprite{
+class spaceShip extends Phaser.GameObjects.Sprite{
     constructor(scene, x, y, texture, frame){
         super(scene, x, y, texture, frame)
 
