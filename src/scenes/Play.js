@@ -20,7 +20,7 @@ class Play extends Phaser.Scene {
         this.cupcake2 = new Cupcake(this, game.config.width/3 + borderPadding * 6, game.config.height/3 - borderUISize - borderPadding, 'cupcake', 0).setOrigin(0, 0)
         this.cupcake3 = new Cupcake(this, game.config.width/2 + borderPadding * 12, game.config.height/3 - borderUISize - borderPadding, 'cupcake', 0).setOrigin(0, 0)
 
-        this.bird = new Bird(this, game.config.width/2, game.config.height - borderPadding - borderUISize * 6, 'bird').setOrigin(0, 0)
+        this.spaceShip = new spaceShip(this, game.config.width/2, game.config.height - borderPadding - borderUISize * 6, 'spaceShip').setOrigin(0, 0)
         // this.donut1 = new Donut(this, game.config.width/2, game.config.height - borderPadding - borderUISize, '').setOrigin(0, 0)
 
         keyReset = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.R)
@@ -58,12 +58,12 @@ class Play extends Phaser.Scene {
         }
 
         //MODS -- init highest score
-        localStorage.setItem('highestScore', this.bird.score.toString());// MOD -- game is over, update the highest score if needed
+        localStorage.setItem('highestScore', this.spaceShip.score.toString());// MOD -- game is over, update the highest score if needed
         
         
         
-        this.scoreText = this.add.text(borderUISize + borderPadding, borderUISize - borderPadding, 'Score: ' + this.bird.score, scoreConfig);
-        this.hpText = this.add.text(game.config.width - borderUISize * 6, borderUISize - borderPadding, 'Hp: ' + this.bird.hp, scoreConfig);
+        this.scoreText = this.add.text(borderUISize + borderPadding, borderUISize - borderPadding, 'Score: ' + this.spaceShip.score, scoreConfig);
+        this.hpText = this.add.text(game.config.width - borderUISize * 6, borderUISize - borderPadding, 'Hp: ' + this.spaceShip.hp, scoreConfig);
         
         
         
@@ -71,7 +71,7 @@ class Play extends Phaser.Scene {
     }
 
     update(){
-        this.background.tilePositionX -= -1
+        this.background.tilePositionY -= 1
          // check key input for restart
         if(this.gameOver && Phaser.Input.Keyboard.JustDown(keyReset)) {
         this.scene.restart()
@@ -81,7 +81,7 @@ class Play extends Phaser.Scene {
         }
 
         if(!this.gameOver){
-            this.bird.update()
+            this.spaceShip.update()
             this.cupcake1.update()
             this.cupcake2.update()
             this.cupcake3.update()
@@ -93,32 +93,32 @@ class Play extends Phaser.Scene {
         
 
         //check collision with cupcake
-        if(this.checkCollision(this.bird, this.cupcake1)){
+        if(this.checkCollision(this.spaceShip, this.cupcake1)){
             
-            this.cakeCollect(this.bird, this.cupcake1)
+            this.cakeCollect(this.spaceShip, this.cupcake1)
             
         }
-        if(this.checkCollision(this.bird, this.cupcake2)){
+        if(this.checkCollision(this.spaceShip, this.cupcake2)){
             
-            this.cakeCollect(this.bird, this.cupcake2)
+            this.cakeCollect(this.spaceShip, this.cupcake2)
         }
-        if(this.checkCollision(this.bird, this.cupcake3)){
+        if(this.checkCollision(this.spaceShip, this.cupcake3)){
             
-            this.cakeCollect(this.bird, this.cupcake3)
+            this.cakeCollect(this.spaceShip, this.cupcake3)
         }
 
         //check collision with booms
-        if(this.checkCollision(this.bird, this.boom1)){
+        if(this.checkCollision(this.spaceShip, this.boom1)){
             
             this.explo(this.boom1)
-            this.checkHp(this.bird)
+            this.checkHp(this.spaceShip)
         }
-        if(this.checkCollision(this.bird, this.boom2)){
+        if(this.checkCollision(this.spaceShip, this.boom2)){
             
             this.explo(this.boom2)
-            this.checkHp(this.bird)
+            this.checkHp(this.spaceShip)
         }
-        if(this.checkCollision(this.bird, this.boom3)){
+        if(this.checkCollision(this.spaceShip, this.boom3)){
             //play explosion sound
             this.explo(this.boom3)
             this.checkHp(this.bird)
@@ -129,23 +129,23 @@ class Play extends Phaser.Scene {
 
     
 
-    checkCollision(bird, item) {
+    checkCollision(spaceShip, item) {
         // simple AABB checking
-        if (bird.x < item.x + item.width && 
-          bird.x + bird.width > item.x && 
-          bird.y < item.y + item.height &&
-          bird.height + bird.y > item. y) {
+        if (spaceShip.x < item.x + item.width && 
+          spaceShip.x + spaceShip.width > item.x && 
+          spaceShip.y < item.y + item.height &&
+          spaceShip.height + spaceShip.y > item. y) {
           return true
         } else {
           return false
         }
       }
-    checkHp(bird){
-        if(bird.hp >= 1){
-            bird.hp -= 1
+    checkHp(spaceShip){
+        if(spaceShip.hp >= 1){
+            spaceShip.hp -= 1
             console.log('Hp is ' + bird.hp)
             this.hpText.text = 'Hp: ' + bird.hp
-            bird.reset()
+            spaceShip.reset()
         }else{
             // console.log('game over')
             this.gameOver = true
@@ -165,21 +165,21 @@ class Play extends Phaser.Scene {
                 
             }
             this.OverText = this.add.text(game.config.width/8, game.config.height/2, 'GameOver: R to restart, X back to menu' , scoreConfig);
-            if(this.bird.score > parseInt(localStorage.getItem('highestScore'))){
-                localStorage.setItem('highestScore', this.bird.score.toString());
+            if(this.spaceShip.score > parseInt(localStorage.getItem('highestScore'))){
+                localStorage.setItem('highestScore', this.spaceShip.score.toString());
             }
         }
     }
-    cakeCollect(bird, item){
+    cakeCollect(spaceShip, item){
         item.alpha = 0
-        bird.score += 1
+        spaceShip.score += 1
         this.sound.play('pickupcake')
         //update the text object
         item.reset()
         item.alpha = 1
         
         // console.log('Your Score:' + bird.score)
-        this.scoreText.text = 'Score: ' + this.bird.score
+        this.scoreText.text = 'Score: ' + this.spaceShip.score
 
         
     }
