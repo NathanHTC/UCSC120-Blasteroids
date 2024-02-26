@@ -90,7 +90,6 @@ class Play extends Phaser.Scene {
             this.boom2.update()
             this.boom3.update()
         }
-        
 
         //check collision with cupcake
         if(this.checkCollision(this.spaceShip, this.cupcake1)){
