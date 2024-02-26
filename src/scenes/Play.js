@@ -121,7 +121,7 @@ class Play extends Phaser.Scene {
         if(this.checkCollision(this.spaceShip, this.boom3)){
             //play explosion sound
             this.explo(this.boom3)
-            this.checkHp(this.bird)
+            this.checkHp(this.spaceShip)
             
         }
         
@@ -143,8 +143,8 @@ class Play extends Phaser.Scene {
     checkHp(spaceShip){
         if(spaceShip.hp >= 1){
             spaceShip.hp -= 1
-            console.log('Hp is ' + bird.hp)
-            this.hpText.text = 'Hp: ' + bird.hp
+            console.log('Hp is ' + spaceShip.hp)
+            this.hpText.text = 'Hp: ' + spaceShip.hp
             spaceShip.reset()
         }else{
             // console.log('game over')
