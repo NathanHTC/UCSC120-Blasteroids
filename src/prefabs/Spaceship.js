@@ -12,15 +12,19 @@ class spaceShip extends Phaser.GameObjects.Sprite{
     update(){
         if(keyUp.isDown && this.y > borderPadding){
             this.y -= this.moveSpeed;
+            this.angle = 0;
         }
         if(keyDown.isDown && this.y < game.config.height - borderPadding - borderUISize){
             this.y += this.moveSpeed;
+            this.angle = 180;
         }
         if(keyLeft.isDown && this.x > borderPadding){
             this.x -= this.moveSpeed;
+            this.angle = -90;
         }
         if(keyRight.isDown && this.x < game.config.width - borderPadding - borderUISize){
             this.x += this.moveSpeed;
+            this.angle = 90
         }
         
     }
