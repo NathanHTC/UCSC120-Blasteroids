@@ -14,9 +14,9 @@ class Play extends Phaser.Scene {
         this.background = this.add.tileSprite(0, 0, game.config.width, game.config.height, 'background').setOrigin(0, 0)
         this.add.rectangle(0, 20, game.config.width, borderUISize + 20, 0x0000).setOrigin(0, 0)
         
-        this.coin1 = new Coin(this, game.config.width/2, game.config.height/3, 'cupcake', 0).setOrigin(0, 0)
-        this.coin2 = new Coin(this, game.config.width/3 + borderPadding * 6, game.config.height/3 - borderUISize - borderPadding, 'cupcake', 0).setOrigin(0, 0)
-        this.coin3 = new Coin(this, game.config.width/2 + borderPadding * 12, game.config.height/3 - borderUISize - borderPadding, 'cupcake', 0).setOrigin(0, 0)
+        this.fuel1 = new Fuel(this, game.config.width/2, game.config.height/3, 'fuel', 0).setOrigin(0, 0)
+        this.fuel2 = new Fuel(this, game.config.width/3 + borderPadding * 6, game.config.height/3 - borderUISize - borderPadding, 'fuel', 0).setOrigin(0, 0)
+        this.fuel3 = new Fuel(this, game.config.width/2 + borderPadding * 12, game.config.height/3 - borderUISize - borderPadding, 'fuel', 0).setOrigin(0, 0)
 
         this.spaceShip = new spaceShip(this, game.config.width/2, game.config.height - borderPadding - borderUISize * 6, 'spaceShip').setOrigin(0.5, 0.5)
         // this.donut1 = new Donut(this, game.config.width/2, game.config.height - borderPadding - borderUISize, '').setOrigin(0, 0)
@@ -64,7 +64,14 @@ class Play extends Phaser.Scene {
         
         
         this.scoreText = this.add.text(borderUISize + borderPadding, borderUISize - borderPadding, 'Score: ' + this.spaceShip.score, scoreConfig);
-        this.hpText = this.add.text(game.config.width - borderUISize * 6, borderUISize - borderPadding, 'Hp: ' + this.spaceShip.hp, scoreConfig);
+        this.hpText = this.add.text(game.config.width - borderUISize*2 , borderUISize - borderPadding, 'Hp: ' + this.spaceShip.hp, scoreConfig);
+        this.spaceShip.fuel = 400;
+        this.fuelBarForeground = this.add.rectangle(400, 35, this.spaceShip.fuel, borderUISize-10, 0x00FF00 ).setOrigin(0, 0)
+        
+        
+        
+
+
         
         
         
@@ -83,28 +90,38 @@ class Play extends Phaser.Scene {
 
         if(!this.gameOver){
             this.spaceShip.update()
-            this.coin1.update()
-            this.coin2.update()
-            this.coin3.update()
+            this.spaceShip.fuel -= 0.1
+            this.spaceShip.fuel = Math.max(this.spaceShip.fuel, 0);
+            this.fuelBarForeground.width = this.spaceShip.fuel;
+            
+            this.fuel1.update()
+            this.fuel2.update()
+            this.fuel3.update()
     
             this.boom1.update()
             this.boom2.update()
             this.boom3.update()
         }
 
+        
+        
+
         //check collision with cupcake
-        if(this.checkCollision(this.spaceShip, this.coin1)){
+        if(this.checkCollision(this.spaceShip, this.fuel1)){
             
-            this.cakeCollect(this.spaceShip, this.coin1)
+            this.cakeCollect(this.spaceShip, this.fuel1)
+            this.spaceShip.fuel += 5
             
         }
-        if(this.checkCollision(this.spaceShip, this.coin2)){
+        if(this.checkCollision(this.spaceShip, this.fuel2)){
             
-            this.cakeCollect(this.spaceShip, this.coin2)
+            this.cakeCollect(this.spaceShip, this.fuel2)
+            this.spaceShip.fuel += 5
         }
-        if(this.checkCollision(this.spaceShip, this.coin3)){
+        if(this.checkCollision(this.spaceShip, this.fuel3)){
             
-            this.cakeCollect(this.spaceShip, this.coin3)
+            this.cakeCollect(this.spaceShip, this.fuel3)
+            this.spaceShip.fuel += 5
         }
 
         //check collision with booms
@@ -209,3 +226,4 @@ class Play extends Phaser.Scene {
 
     }
 }
+

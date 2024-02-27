@@ -8,6 +8,7 @@ class spaceShip extends Phaser.GameObjects.Sprite
         this.hp = 5
         this.score = 0
         this.angle = 0
+        
     }
     update(){
         if(keyUp.isDown && this.y > borderPadding){
@@ -29,6 +30,10 @@ class spaceShip extends Phaser.GameObjects.Sprite
         // if(Phaser.Input.Keyboard.JustDown(keyF)){
         //     this.laserGroup.fireBullet();
         // }
+        
+        
+
+
         
     }
     reset(){
