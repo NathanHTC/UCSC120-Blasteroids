@@ -2,6 +2,7 @@
 class Play extends Phaser.Scene {
     constructor(){
         super("playScene");
+        this.laserGroup;
     }
 
     preload(){
@@ -13,17 +14,14 @@ class Play extends Phaser.Scene {
         this.background = this.add.tileSprite(0, 0, game.config.width, game.config.height, 'background').setOrigin(0, 0)
         this.add.rectangle(0, 20, game.config.width, borderUISize + 20, 0x0000).setOrigin(0, 0)
         
-        
-        
-        
-        
-        this.cupcake1 = new Cupcake(this, game.config.width/2, game.config.height/3, 'cupcake', 0).setOrigin(0, 0)
-        this.cupcake2 = new Cupcake(this, game.config.width/3 + borderPadding * 6, game.config.height/3 - borderUISize - borderPadding, 'cupcake', 0).setOrigin(0, 0)
-        this.cupcake3 = new Cupcake(this, game.config.width/2 + borderPadding * 12, game.config.height/3 - borderUISize - borderPadding, 'cupcake', 0).setOrigin(0, 0)
+        this.coin1 = new Coin(this, game.config.width/2, game.config.height/3, 'cupcake', 0).setOrigin(0, 0)
+        this.coin2 = new Coin(this, game.config.width/3 + borderPadding * 6, game.config.height/3 - borderUISize - borderPadding, 'cupcake', 0).setOrigin(0, 0)
+        this.coin3 = new Coin(this, game.config.width/2 + borderPadding * 12, game.config.height/3 - borderUISize - borderPadding, 'cupcake', 0).setOrigin(0, 0)
 
         this.spaceShip = new spaceShip(this, game.config.width/2, game.config.height - borderPadding - borderUISize * 6, 'spaceShip').setOrigin(0.5, 0.5)
         // this.donut1 = new Donut(this, game.config.width/2, game.config.height - borderPadding - borderUISize, '').setOrigin(0, 0)
         
+       // this.laserGroup = new LaserGroup(this);
 
         keyReset = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.R)
         keyX = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.X)
@@ -85,9 +83,9 @@ class Play extends Phaser.Scene {
 
         if(!this.gameOver){
             this.spaceShip.update()
-            this.cupcake1.update()
-            this.cupcake2.update()
-            this.cupcake3.update()
+            this.coin1.update()
+            this.coin2.update()
+            this.coin3.update()
     
             this.boom1.update()
             this.boom2.update()
@@ -95,18 +93,18 @@ class Play extends Phaser.Scene {
         }
 
         //check collision with cupcake
-        if(this.checkCollision(this.spaceShip, this.cupcake1)){
+        if(this.checkCollision(this.spaceShip, this.coin1)){
             
-            this.cakeCollect(this.spaceShip, this.cupcake1)
+            this.cakeCollect(this.spaceShip, this.coin1)
             
         }
-        if(this.checkCollision(this.spaceShip, this.cupcake2)){
+        if(this.checkCollision(this.spaceShip, this.coin2)){
             
-            this.cakeCollect(this.spaceShip, this.cupcake2)
+            this.cakeCollect(this.spaceShip, this.coin2)
         }
-        if(this.checkCollision(this.spaceShip, this.cupcake3)){
+        if(this.checkCollision(this.spaceShip, this.coin3)){
             
-            this.cakeCollect(this.spaceShip, this.cupcake3)
+            this.cakeCollect(this.spaceShip, this.coin3)
         }
 
         //check collision with booms

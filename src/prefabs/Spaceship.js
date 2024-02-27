@@ -1,6 +1,5 @@
-
-
-class spaceShip extends Phaser.GameObjects.Sprite{
+class spaceShip extends Phaser.GameObjects.Sprite
+{
     constructor(scene, x, y, texture, frame){
         super(scene, x, y, texture, frame)
 
@@ -27,17 +26,14 @@ class spaceShip extends Phaser.GameObjects.Sprite{
             this.x += this.moveSpeed;
             this.angle = 90
         }
-        if(Phaser.Input.Keyboard.JustDown(keyF)){
-            this.shootBullet();
-        }
+        // if(Phaser.Input.Keyboard.JustDown(keyF)){
+        //     this.laserGroup.fireBullet();
+        // }
         
     }
     reset(){
         this.y = game.config.height - borderPadding - borderUISize * 7
     }
 
-    shootBullet(){
-        let bullet = new Bullet(this.scene, this.x, this.y);
-        bullet.fire(this.x, this.y, this.angle)
-    }
+    
 }
