@@ -55,7 +55,7 @@ class Menu extends Phaser.Scene {
         }),
         frameRate: 30
        }) 
-       this.add.text(game.config.width / 3, game.config.height / 2 - 60, 'Endless Runner Menu')
+       this.add.text(game.config.width / 3, game.config.height / 2 - 60, 'Blasteriods Menu')
        this.add.text(game.config.width / 3, game.config.height / 2 - 30, 'Left Arrow: Start Normal Mode')
        this.add.text(game.config.width / 3, game.config.height / 2, 'Right Arrow: Start Hard Mode')
 
@@ -65,7 +65,7 @@ class Menu extends Phaser.Scene {
         //initialize highestScore to 0 if not found, stored in localStorage
         let highestScore = localStorage.getItem('highestScore') || '0'; 
         this.scoreText = this.add.text(game.config.width/3 + 120, game.config.height/2 + 50, 'Highest Score:' + highestScore).setOrigin(0.5);
-        this.creditText = this.add.text(game.config.width/3 + 120, game.config.height/2 + 90, 'Credit: Art: HoTin Chen ; Music: Rog Asignf ').setOrigin(0.5);
+        this.creditText = this.add.text(game.config.width/3 + 120, game.config.height/2 + 90, 'Credit: HoTin Chen, Rog Asignf').setOrigin(0.5);
 
     }
     update(){
