@@ -10,7 +10,7 @@ class Menu extends Phaser.Scene {
         this.load.image('donut1', './assets/domut1.png')
         this.load.image('spaceShip', './assets/sprites/spaceShip.png')
         this.load.image('bullet', './assets/sprites/bullet')
-        this.load.image('cupcake', './assets/cupcake.png')
+        this.load.image('fuel', './assets/sprites/fuel.png')
         this.load.image('boom', './assets/boom.png')
         this.load.image('background', './assets/sprites/background.png')
         
