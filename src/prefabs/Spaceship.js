@@ -8,6 +8,7 @@ class spaceShip extends Phaser.GameObjects.Sprite{
         this.moveSpeed = 4
         this.hp = 5
         this.score = 0
+        this.angle = 0
     }
     update(){
         if(keyUp.isDown && this.y > borderPadding){
@@ -26,9 +27,17 @@ class spaceShip extends Phaser.GameObjects.Sprite{
             this.x += this.moveSpeed;
             this.angle = 90
         }
+        if(Phaser.Input.Keyboard.JustDown(keyF)){
+            this.shootBullet();
+        }
         
     }
     reset(){
         this.y = game.config.height - borderPadding - borderUISize * 7
+    }
+
+    shootBullet(){
+        let bullet = new Bullet(this.scene, this.x, this.y);
+        bullet.fire(this.x, this.y, this.angle)
     }
 }

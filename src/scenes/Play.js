@@ -1,3 +1,4 @@
+
 class Play extends Phaser.Scene {
     constructor(){
         super("playScene");
@@ -20,8 +21,9 @@ class Play extends Phaser.Scene {
         this.cupcake2 = new Cupcake(this, game.config.width/3 + borderPadding * 6, game.config.height/3 - borderUISize - borderPadding, 'cupcake', 0).setOrigin(0, 0)
         this.cupcake3 = new Cupcake(this, game.config.width/2 + borderPadding * 12, game.config.height/3 - borderUISize - borderPadding, 'cupcake', 0).setOrigin(0, 0)
 
-        this.spaceShip = new spaceShip(this, game.config.width/2, game.config.height - borderPadding - borderUISize * 6, 'spaceShip').setOrigin(0, 0)
+        this.spaceShip = new spaceShip(this, game.config.width/2, game.config.height - borderPadding - borderUISize * 6, 'spaceShip').setOrigin(0.5, 0.5)
         // this.donut1 = new Donut(this, game.config.width/2, game.config.height - borderPadding - borderUISize, '').setOrigin(0, 0)
+        
 
         keyReset = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.R)
         keyX = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.X)
@@ -29,6 +31,7 @@ class Play extends Phaser.Scene {
         keyDown = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.DOWN)
         keyLeft = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.LEFT)
         keyRight = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.RIGHT)
+        keyF = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.F)
 
         this.boom1 = new Boom(this, game.config.width/2, game.config.height/3 - borderPadding * 9, 'boom', 0).setOrigin(0, 0)
         this.boom2 = new Boom(this, game.config.width/2 + borderPadding * 7, game.config.height/3 - borderPadding * 5, 'boom', 0).setOrigin(0, 0)
