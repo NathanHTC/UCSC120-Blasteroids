@@ -74,7 +74,9 @@ class Menu extends Phaser.Scene {
         if(Phaser.Input.Keyboard.JustDown(keyLeft)){
             this.game.settings = {
                 // cupcakeSpeed: 3,
-                boomSpeed:2
+                boomSpeed:2,
+                spaceShipSpeed: 4,
+                tileSpeed: 1
             }
             this.sound.play('pickupcake')
             this.scene.start('playScene')
@@ -82,7 +84,9 @@ class Menu extends Phaser.Scene {
         if(Phaser.Input.Keyboard.JustDown(keyRight)){
             this.game.settings = {
                 // cupcakeSpeed: 4,
-                boomSpeed:3
+                boomSpeed: 3,
+                spaceShipSpeed:5,
+                tileSpeed: 2
             }
             this.sound.play('pickupcake')
             this.scene.start('playScene')

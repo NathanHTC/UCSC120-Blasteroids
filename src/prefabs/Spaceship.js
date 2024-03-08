@@ -4,8 +4,8 @@ class spaceShip extends Phaser.GameObjects.Sprite
         super(scene, x, y, texture, frame)
 
         scene.add.existing(this)
-        this.moveSpeed = 4
-        this.hp = 5
+        this.moveSpeed = game.settings.spaceShipSpeed
+        this.hp = 10
         this.score = 0
         this.angle = 0
         

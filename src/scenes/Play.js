@@ -82,7 +82,7 @@ class Play extends Phaser.Scene {
     }
 
     update(){
-        this.background.tilePositionY -= 1
+        this.background.tilePositionY -= this.game.settings.tileSpeed
          // check key input for restart
         if(this.gameOver && Phaser.Input.Keyboard.JustDown(keyReset)) {
         this.scene.restart()
@@ -146,9 +146,11 @@ class Play extends Phaser.Scene {
         }
         
     }
-
+    //enter phase two
     increaseBoomSpeed(){
         this.game.settings.boomSpeed += 3;
+        this.game.settings.spaceShipSpeed += 2
+        this.game.settings.tileSpeed += 2
     }
 
     checkCollision(spaceShip, item) {
