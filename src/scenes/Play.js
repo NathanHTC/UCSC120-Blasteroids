@@ -151,9 +151,15 @@ class Play extends Phaser.Scene {
     }
     //enter phase two
     increaseBoomSpeed(){
-        this.game.settings.boomSpeed += 3;
-        this.game.settings.spaceShipSpeed += 5
-        this.game.settings.tileSpeed += 3
+        // this.game.settings.boomSpeed += 3;
+        // this.game.settings.spaceShipSpeed += 5
+        // this.game.settings.tileSpeed += 3
+        this.game.settings = {
+            // cupcakeSpeed: 3,
+            boomSpeed: 5,
+            spaceShipSpeed: 8,
+            tileSpeed: 6
+        }
     }
 
     checkCollision(spaceShip, item) {

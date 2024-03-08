@@ -4,7 +4,7 @@ class spaceShip extends Phaser.GameObjects.Sprite
         super(scene, x, y, texture, frame)
 
         scene.add.existing(this)
-        this.moveSpeed = game.settings.spaceShipSpeed
+        // this.moveSpeed = game.settings.spaceShipSpeed
         this.hp = 15
         this.score = 0
         this.angle = 0
@@ -14,19 +14,19 @@ class spaceShip extends Phaser.GameObjects.Sprite
     }
     update(){
         if(keyUp.isDown && this.y > borderPadding){
-            this.y -= this.moveSpeed;
+            this.y -= game.settings.spaceShipSpeed;
             this.angle = 0;
         }
         if(keyDown.isDown && this.y < game.config.height - borderPadding - borderUISize){
-            this.y += this.moveSpeed;
+            this.y += game.settings.spaceShipSpeed;
             this.angle = 180;
         }
         if(keyLeft.isDown && this.x > borderPadding){
-            this.x -= this.moveSpeed;
+            this.x -= game.settings.spaceShipSpeed;
             this.angle = -90;
         }
         if(keyRight.isDown && this.x < game.config.width - borderPadding - borderUISize){
-            this.x += this.moveSpeed;
+            this.x += game.settings.spaceShipSpeed;
             this.angle = 90
         }
         // if(Phaser.Input.Keyboard.JustDown(keyF)){
