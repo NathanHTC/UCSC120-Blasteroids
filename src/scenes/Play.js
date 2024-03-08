@@ -23,6 +23,9 @@ class Play extends Phaser.Scene {
         
        // this.laserGroup = new LaserGroup(this);
 
+       //create a timer object
+       this.time.delayedCall(28000, this.increaseBoomSpeed, [], this);
+
         keyReset = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.R)
         keyX = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.X)
         keyUp = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.UP)
@@ -144,7 +147,9 @@ class Play extends Phaser.Scene {
         
     }
 
-    
+    increaseBoomSpeed(){
+        this.game.settings.boomSpeed += 3;
+    }
 
     checkCollision(spaceShip, item) {
         // simple AABB checking
