@@ -6,7 +6,7 @@ class Play extends Phaser.Scene {
     }
 
     preload(){
-        this.load.audio('backgroundMusic', './assets/scifiMusic.mp3');
+        this.load.audio('backgroundMusic', './assets/music/five.ogg');
     }
 
     create(){
@@ -14,11 +14,11 @@ class Play extends Phaser.Scene {
         this.background = this.add.tileSprite(0, 0, game.config.width, game.config.height, 'background').setOrigin(0, 0)
         this.add.rectangle(0, 20, game.config.width, borderUISize + 20, 0x0000).setOrigin(0, 0)
         
-        this.fuel1 = new Fuel(this, game.config.width/2, game.config.height/3, 'fuel', 0).setOrigin(0, 0)
-        this.fuel2 = new Fuel(this, game.config.width/3 + borderPadding * 6, game.config.height/3 - borderUISize - borderPadding, 'fuel', 0).setOrigin(0, 0)
-        this.fuel3 = new Fuel(this, game.config.width/2 + borderPadding * 12, game.config.height/3 - borderUISize - borderPadding, 'fuel', 0).setOrigin(0, 0)
+        this.fuel1 = new Fuel(this, game.config.width/2, game.config.height/3, 'fuel', 0).setOrigin(0, 0).setScale(0.7);
+        this.fuel2 = new Fuel(this, game.config.width/3 + borderPadding * 6, game.config.height/3 - borderUISize - borderPadding, 'fuel', 0).setOrigin(0.5, 0.5).setScale(0.7);
+        this.fuel3 = new Fuel(this, game.config.width/2 + borderPadding * 12, game.config.height/3 - borderUISize - borderPadding, 'fuel', 0).setOrigin(0.5, 0.5).setScale(0.7);
 
-        this.spaceShip = new spaceShip(this, game.config.width/2, game.config.height - borderPadding - borderUISize * 6, 'spaceShip').setOrigin(0.5, 0.5)
+        this.spaceShip = new spaceShip(this, game.config.width/2, game.config.height - borderPadding - borderUISize * 6, 'spaceShip').setOrigin(0.5, 0.5).setScale(0.7);
         // this.donut1 = new Donut(this, game.config.width/2, game.config.height - borderPadding - borderUISize, '').setOrigin(0, 0)
         
        // this.laserGroup = new LaserGroup(this);
@@ -31,9 +31,9 @@ class Play extends Phaser.Scene {
         keyRight = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.RIGHT)
         keyF = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.F)
 
-        this.boom1 = new Boom(this, game.config.width/2, game.config.height/3 - borderPadding * 9, 'boom', 0).setOrigin(0, 0)
-        this.boom2 = new Boom(this, game.config.width/2 + borderPadding * 7, game.config.height/3 - borderPadding * 5, 'boom', 0).setOrigin(0, 0)
-        this.boom3 = new Boom(this, game.config.width/2 + borderPadding * 15, game.config.height/3 - borderPadding, 'boom', 0).setOrigin(0, 0)
+        this.boom1 = new Boom(this, game.config.width/2, game.config.height/3 - borderPadding * 9, 'boom', 0).setOrigin(0.5, 0.5).setScale(0.7);
+        this.boom2 = new Boom(this, game.config.width/2 + borderPadding * 7, game.config.height/3 - borderPadding * 5, 'boom', 0).setOrigin(0.5, 0.5).setScale(0.7);
+        this.boom3 = new Boom(this, game.config.width/2 + borderPadding * 15, game.config.height/3 - borderPadding, 'boom', 0).setOrigin(0.5, 0.5).setScale(0.7);
 
         //MODS -- add BGM
         this.music = this.sound.add('backgroundMusic');

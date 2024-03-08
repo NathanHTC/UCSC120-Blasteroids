@@ -10,6 +10,11 @@
             background-color: beige;
         }
     </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Honk&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./src/css/output.css"> 
+    <script src="./src/audio.js"></script>
     <script src="./lib/phaser.js"></script>
     <script src="./src/prefabs/Spaceship.js"></script>
     <script src="./src/prefabs//Laser.js"></script>
@@ -21,14 +26,33 @@
     <script src="./src/main.js"></script>
     
 </head>
-<body>
-    <div class="container bg-orange-300 p-5 mt-2">
-        <h1 class="h1text">
-            Welcome to Blasteriods
+<body class="bg-gray-700 relative">
+    
+    <div class="bg-gray-700 p-6">
+        <h1 class="font-honk text-center text-6xl">
+                Welcome to Blasteriods
         </h1>
-    </div>
-    <div class="absolute container ">
-        
+        <div class="flex">
+            <button
+				type="button"
+				id="pauseBtn"
+				class="hover:scale-110 cursor-pointer"
+			>
+				<img src="./assets/icons/mute.png" alt="mute" class="w-14 p-2">
+			</button>
+            <button
+                type="button"
+                id="pauseBtn"
+                class="hover:scale-110 cursor-pointer"
+            >
+                
+            </button>
+            <audio id="bgMusic" loop>
+				<source src="./assets/music/five.ogg" type="audio/mpeg">
+				Your browser does not support the audio element.
+                <!-- <img src="./assets/icons/wa6.png" alt="image of wa6" class="w-12 h-12 shadow-lg rounded-full transition-transform  hover:scale-125;"> -->
+			</audio>
+        </div>
     </div>
     
 </body>
