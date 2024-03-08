@@ -10,7 +10,7 @@ class Play extends Phaser.Scene {
     }
 
     create(){
-        this.add.text(20, 20, 'Endless Runner Play')
+        
         this.background = this.add.tileSprite(0, 0, game.config.width, game.config.height, 'background').setOrigin(0, 0)
         this.add.rectangle(0, 20, game.config.width, borderUISize + 20, 0x0000).setOrigin(0, 0)
         
