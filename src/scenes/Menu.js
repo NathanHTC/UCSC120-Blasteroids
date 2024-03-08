@@ -67,7 +67,7 @@ class Menu extends Phaser.Scene {
         //initialize highestScore to 0 if not found, stored in localStorage
         let highestScore = localStorage.getItem('highestScore') || '0'; 
         this.scoreText = this.add.text(game.config.width/3 + 120, game.config.height/2 + 50, 'Highest Score:' + highestScore).setOrigin(0.5);
-        this.creditText = this.add.text(game.config.width/3 + 120, game.config.height/2 + 90, 'Credit: HoTin Chen, Rog Asignf').setOrigin(0.5);
+        this.creditText = this.add.text(game.config.width/3 + 120, game.config.height/2 + 90, 'Credit: various artists').setOrigin(0.5);
 
     }
     update(){
