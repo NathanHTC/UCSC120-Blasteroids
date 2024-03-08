@@ -131,16 +131,19 @@ class Play extends Phaser.Scene {
         if(this.checkCollision(this.spaceShip, this.boom1)){
             
             this.explo(this.boom1)
+            this.spaceShip.takeDamage();
             this.checkHp(this.spaceShip)
         }
         if(this.checkCollision(this.spaceShip, this.boom2)){
             
             this.explo(this.boom2)
+            this.spaceShip.takeDamage();
             this.checkHp(this.spaceShip)
         }
         if(this.checkCollision(this.spaceShip, this.boom3)){
             //play explosion sound
             this.explo(this.boom3)
+            this.spaceShip.takeDamage();
             this.checkHp(this.spaceShip)
             
         }
@@ -150,7 +153,7 @@ class Play extends Phaser.Scene {
     increaseBoomSpeed(){
         this.game.settings.boomSpeed += 3;
         this.game.settings.spaceShipSpeed += 5
-        this.game.settings.tileSpeed += 2
+        this.game.settings.tileSpeed += 3
     }
 
     checkCollision(spaceShip, item) {
@@ -166,7 +169,8 @@ class Play extends Phaser.Scene {
       }
     checkHp(spaceShip){
         if(spaceShip.hp >= 1){
-            spaceShip.hp -= 1
+            // spaceShip.hp -= 1
+            
             console.log('Hp is ' + spaceShip.hp)
             this.hpText.text = 'Hp: ' + spaceShip.hp
             spaceShip.reset()

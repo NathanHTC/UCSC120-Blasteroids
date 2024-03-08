@@ -8,6 +8,8 @@ class spaceShip extends Phaser.GameObjects.Sprite
         this.hp = 20
         this.score = 0
         this.angle = 0
+        this.isInvulnerable = false;
+        this.invulnerabilityDuration = 2000;
         
     }
     update(){
@@ -38,6 +40,16 @@ class spaceShip extends Phaser.GameObjects.Sprite
     }
     reset(){
         this.y = game.config.height - borderPadding - borderUISize * 7
+    }
+
+    takeDamage(){
+        if(!this.isInvulnerable){
+            this.hp -= 1;
+            this.isInvulnerable = true;
+            this.scene.time.delayedCall(this.invulnerabilityDuration, () => {
+                this.isInvulnerable = false; //reest after duration
+            }, [], this)
+        }
     }
 
     
