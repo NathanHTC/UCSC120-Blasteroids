@@ -26,27 +26,35 @@
     <script src="./src/main.js"></script>
     
 </head>
-<body class="bg-gray-700 relative">
+<body class="bg-gray-700 relative" style="background-image: url('./assets/icons/wallpaper.webp'); background-size: cover; background-position: center;">
+
     
-    <div class="bg-gray-700 p-6">
-        <h1 class="font-honk text-center text-6xl">
-                Welcome to Blasteriods
-        </h1>
+    <div class=" p-6">
         <div class="flex">
             <button
 				type="button"
 				id="pauseBtn"
-				class="hover:scale-110 cursor-pointer"
+				class="hover:scale-110 cursor-pointer m-4"
 			>
 				<img src="./assets/icons/mute.png" alt="mute" class="w-14 p-2">
 			</button>
-            <button
+            <h1 class="font-honk text-center text-6xl">
+                Welcome to Blasteriods
+            </h1>
+            <!-- <div>
+                <img src="./assets/icons/wallpaper.webp" alt="wallpaper" class="max-h-56 w-full ">
+            </div> -->
+        </div>
+        
+        <!-- <div class="flex"> -->
+            
+            <!-- <button
                 type="button"
                 id="pauseBtn"
                 class="hover:scale-110 cursor-pointer"
-            >
+            > -->
                 
-            </button>
+            <!-- </button> -->
             <audio id="bgMusic" loop>
 				<source src="./assets/music/five.ogg" type="audio/mpeg">
 				Your browser does not support the audio element.

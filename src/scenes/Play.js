@@ -2,7 +2,7 @@
 class Play extends Phaser.Scene {
     constructor(){
         super("playScene");
-        this.laserGroup;
+        
     }
 
     preload(){
@@ -113,18 +113,18 @@ class Play extends Phaser.Scene {
         if(this.checkCollision(this.spaceShip, this.fuel1)){
             
             this.cakeCollect(this.spaceShip, this.fuel1)
-            this.spaceShip.fuel += 5
+            this.spaceShip.fuel += 8
             
         }
         if(this.checkCollision(this.spaceShip, this.fuel2)){
             
             this.cakeCollect(this.spaceShip, this.fuel2)
-            this.spaceShip.fuel += 5
+            this.spaceShip.fuel += 8
         }
         if(this.checkCollision(this.spaceShip, this.fuel3)){
             
             this.cakeCollect(this.spaceShip, this.fuel3)
-            this.spaceShip.fuel += 5
+            this.spaceShip.fuel += 8
         }
 
         //check collision with booms
@@ -149,7 +149,7 @@ class Play extends Phaser.Scene {
     //enter phase two
     increaseBoomSpeed(){
         this.game.settings.boomSpeed += 3;
-        this.game.settings.spaceShipSpeed += 2
+        this.game.settings.spaceShipSpeed += 5
         this.game.settings.tileSpeed += 2
     }
 
