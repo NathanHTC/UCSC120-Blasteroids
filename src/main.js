@@ -6,7 +6,10 @@ let config = {
     type:Phaser.AUTO,
     width: 1000,
     height:800,
-    scene: [ Menu, Play ]
+    scene: [ Menu, Play ],
+    settings: {
+        boomSpeed: 6
+    }
 }
 
 let game = new Phaser.Game(config);

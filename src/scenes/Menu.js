@@ -13,6 +13,7 @@ class Menu extends Phaser.Scene {
         this.load.image('fuel', './assets/sprites/fuel.png')
         this.load.image('boom', './assets/boom.png')
         this.load.image('background', './assets/sprites/background.png')
+        this.load.image('background2', './assets/sprites/starrysky.jpeg')
         
         // load audio
         this.load.audio('sfx_explo01', './assets/explo01.wav');
@@ -46,6 +47,7 @@ class Menu extends Phaser.Scene {
     }
 
     create() {
+    this.background = this.add.tileSprite(0, 0, game.config.width, game.config.height, 'background2').setOrigin(0, 0)
        this.anims.create({
         key: 'explode',
         frames: this.anims.generateFrameNumbers('explosion', {
