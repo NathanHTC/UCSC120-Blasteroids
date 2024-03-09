@@ -67,7 +67,7 @@ class Play extends Phaser.Scene {
         
         
         this.scoreText = this.add.text(borderUISize + borderPadding, borderUISize - borderPadding, 'Score: ' + this.spaceShip.score, scoreConfig);
-        this.hpText = this.add.text(game.config.width - borderUISize*2 , borderUISize - borderPadding, 'Hp: ' + this.spaceShip.hp, scoreConfig);
+        this.hpText = this.add.text(game.config.width - borderUISize*6 , borderUISize - borderPadding, 'Hp: ' + this.spaceShip.hp, scoreConfig);
         this.spaceShip.fuel = 400;
         this.fuelBarForeground = this.add.rectangle(400, 35, this.spaceShip.fuel, borderUISize-10, 0x00FF00 ).setOrigin(0, 0)
         
