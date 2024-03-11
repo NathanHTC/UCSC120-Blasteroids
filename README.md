@@ -1,6 +1,8 @@
 This is a UCSC120 TEAM Project
 created by Shazer Rizzo and Nathan Chan
 
+Page: https://nathanhtc.github.io/UCSC120-Blasteroids/
+
 Approx. Dev Time Line;
 
 Let’s try to finish the following by next Wesday, 28 Feb
