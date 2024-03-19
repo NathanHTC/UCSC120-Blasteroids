@@ -1,7 +1,5 @@
-//HO TIN CHEN
-//Endless Runner
-//12 hours
-
+//Nathan Chan and Shazer Rizzo
+//Make the Fake
 let config = {
     type:Phaser.AUTO,
     width: 1200,
